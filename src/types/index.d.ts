@@ -14,6 +14,19 @@ declare global {
     contact: string;
   }
 
+  export interface NavItems {
+    title: string;
+    href: string;
+    services?: Array<NavService>;
+  }
+  
+  interface NavService {
+    title: string;
+    href: string;
+    description: string;
+  }
+  
+
   interface Service {
     metadata: ServiceMetadata;
     content: string;
@@ -30,4 +43,5 @@ declare global {
 }
 
 // Need to export something to make it a module
-export {};
+export { };
+

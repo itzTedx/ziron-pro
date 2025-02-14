@@ -4,7 +4,9 @@ import { monaSans, plusJakarta, valverde } from "@/assets/fonts";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import "./globals.css";
+import Navbar from "@/components/global/navbar";
+import "../styles/globals.css";
+import "../styles/ui.css";
 
 export const metadata: Metadata = {
   title: siteConfig.name,
@@ -67,6 +69,7 @@ export default function RootLayout({
           "antialiased"
         )}
       >
+        <Navbar />
         {children}
       </body>
     </html>
