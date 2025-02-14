@@ -1,8 +1,10 @@
-import { monaSans, plusJakarta, valverde } from '@/assets/fonts';
-import { siteConfig } from '@/config/site';
-import { cn } from '@/lib/utils';
-import type { Metadata } from 'next';
-import './globals.css';
+import type { Metadata } from "next";
+
+import { monaSans, plusJakarta, valverde } from "@/assets/fonts";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: siteConfig.name,
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -58,15 +60,15 @@ export default function RootLayout({
         />
       </head>
       <body
-       className={cn(
-        plusJakarta.className,
-        monaSans.variable,
-        valverde.variable,
-        "antialiased"
-      )}
+        className={cn(
+          plusJakarta.className,
+          monaSans.variable,
+          valverde.variable,
+          "antialiased"
+        )}
       >
         {children}
       </body>
     </html>
-  )
+  );
 }
