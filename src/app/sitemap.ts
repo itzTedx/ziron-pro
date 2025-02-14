@@ -1,6 +1,7 @@
+import { getServices } from "@/features/services/action";
 import type { MetadataRoute } from "next";
 
-import { getServices } from "@/server/actions/get-service-by-mdx";
+
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseURL = process.env.BASE_URL || "";
