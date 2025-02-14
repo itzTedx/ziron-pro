@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: "@",
   },
   metadataBase: new URL(siteConfig.url),
   alternates: { canonical: "/" },
