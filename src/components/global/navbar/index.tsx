@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 
 import { Logo } from "@/assets/logo";
-import { NavLinks } from "../layout/navbar/links";
-import PrimaryButton from "../ui/primary-button";
+import PrimaryButton from "../../ui/primary-button";
+import { NavLinks } from "./links";
 
 export default function Navbar() {
   const isScrolled = useScroll(100);
