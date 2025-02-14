@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 
 import {
     IconBriefcase,
@@ -42,14 +42,11 @@ const sectionLinks = [
   },
 ] as const;
 
-export const FloatingDock = ({ className }: { className?: string }) => {
-  return (
-    <>
-    
-      <FloatingDockMobile className={className} />
-    </>
-  );
-};
+export const FloatingDock = memo(({ className }: { className?: string }) => {
+  return <FloatingDockMobile className={className} />;
+});
+
+FloatingDock.displayName = "FloatingDock";
 
 const FloatingDockMobile = ({ className }: { className?: string }) => {
   const ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;

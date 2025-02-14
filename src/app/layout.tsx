@@ -4,6 +4,7 @@ import { monaSans, plusJakarta, valverde } from "@/assets/fonts";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
+import { FloatingActions } from "@/components/global/floating-actions";
 import Footer from "@/components/global/footer";
 import Navbar from "@/components/global/navbar";
 import "../styles/globals.css";
@@ -74,6 +75,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
+          <FloatingActions />
           <Footer />
         </Providers>
       </body>
