@@ -29,17 +29,3 @@ export const SOCIALS = [
     icon: IconBrandWhatsapp,
   },
 ];
-
-export const ORGANIZATION_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Ziron Media",
-  description: "A Friendly Digital Marketing Company in Dubai",
-  url: "https://yourdomain.com",
-  logo: "https://yourdomain.com/logo.png",
-  sameAs: [
-    "https://facebook.com/zironmedia",
-    "https://twitter.com/zironmedia",
-    "https://instagram.com/zironmedia",
-  ],
-};
