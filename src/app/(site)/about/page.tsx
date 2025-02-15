@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { memo } from "react";
 
-import { siteConfig } from "@/config/site";
 import { Clients } from "@/features/about/components/clients";
 import { Founders } from "@/features/about/sections/founders";
 import { Hero } from "@/features/about/sections/hero";
@@ -52,6 +51,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
+
   robots: {
     index: true,
     follow: true,
@@ -60,24 +60,4 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-};
-
-// Add JSON-LD structured data
-export const generateMetadata = async () => {
-  return {
-    other: {
-      "script:ld+json": {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "Ziron Media",
-        description: PAGE_DESCRIPTION,
-        url: `${SITE_URL}/about`,
-        contactPoint: {
-          "@type": "ContactPoint",
-          telephone: siteConfig.contact,
-          contactType: "customer service",
-        },
-      },
-    },
-  };
 };
