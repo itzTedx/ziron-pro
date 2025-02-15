@@ -36,16 +36,29 @@ const CobeDraggable = dynamic(
 
 export function Featured() {
   return (
-    <section className="bg-indigo-50/40 px-3 py-12 pt-24 max-md:overflow-hidden md:px-9 md:py-24">
+    <section
+      id="services"
+      aria-label="Our Featured Services"
+      className="bg-indigo-50/40 px-3 py-12 pt-24 max-md:overflow-hidden md:px-9 md:py-24"
+    >
       <div className="container flex flex-col items-center gap-6 max-md:px-3">
-        <Badge variant={"secondary"}>✦ What we are great at</Badge>
+        <Badge variant={"secondary"} role="text" aria-label="Section Highlight">
+          ✦ What we are great at
+        </Badge>
         <TitlePullUp />
 
-        <BentoGrid>
+        <BentoGrid aria-label="Featured Services">
           {features.map((feature, idx) => (
-            <BentoCard key={idx} {...feature} />
+            <BentoCard
+              key={idx}
+              {...feature}
+              aria-labelledby={`feature-title-${idx}`}
+            />
           ))}
-          <Blob className="pointer-events-none absolute top-0 -z-10 scale-150 select-none" />
+          <Blob
+            className="pointer-events-none absolute top-0 -z-10 scale-150 select-none"
+            aria-hidden="true"
+          />
         </BentoGrid>
       </div>
     </section>
@@ -54,15 +67,15 @@ export function Featured() {
 
 const features = [
   {
-    name: "All your Marketing needs in one place",
+    name: "Comprehensive Digital Marketing Solutions",
     description:
-      "From strategy to execution, we offer a comprehensive suite of services to cover every aspect of your digital marketing, ensuring you have everything you need under one roof.",
+      "Expert digital marketing services including SEO, social media, content strategy, and paid advertising - all integrated under one roof for maximum impact and ROI.",
     href: "/what-we-do",
-    cta: "Check what we do",
+    cta: "Explore Our Services",
     titleClass: "text-primary",
     className:
       "col-span-3 md:col-span-2 row-span-2 border border-primary shadow-primary-md",
-    background: <MarqueeComp />,
+    background: <MarqueeComp aria-hidden="true" />,
   },
   {
     name: "Get Connected to Your Audience – Fast",
@@ -130,17 +143,46 @@ const features = [
     background: "",
   },
   {
-    name: "All Your Digital Marketing Needs Under One Roof",
+    name: "Results-Driven Digital Marketing Agency",
     description:
-      "From strategy to execution, we offer everything you need to elevate your digital presence and achieve your marketing goals. Our services cover all aspects of your brand's online identity, including social media, web development, and content marketing.",
+      "Transform your online presence with our comprehensive digital marketing solutions. We specialize in SEO, social media management, content marketing, and data-driven strategies that deliver measurable results.",
     href: "/what-we-do/social-media-management",
-    cta: "Explore our strategies",
+    cta: "View Our Proven Strategies",
     className:
-      "lg:col-span-2 row-span-2 md:col-span-4 md:row-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-3 ",
+      "lg:col-span-2 row-span-2 md:col-span-4 md:row-span-1 lg:row-span-2 lg:col-start-3 lg:row-start-3",
     background: (
       <div className="mt-28">
-        <AnimatedBeamComp className="absolute -top-4 border-none transition-all duration-300 ease-out md:right-2 md:top-4 md:h-[350px] md:group-hover:scale-105" />
+        <AnimatedBeamComp
+          className="absolute -top-4 border-none transition-all duration-300 ease-out md:right-2 md:top-4 md:h-[350px] md:group-hover:scale-105"
+          aria-hidden="true"
+        />
       </div>
     ),
   },
 ];
+
+// Add JSON-LD structured data
+export function FeaturedStructuredData() {
+  return (
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: "Ziron Pro Digital Marketing Services",
+        provider: {
+          "@type": "Organization",
+          name: "Ziron Pro",
+        },
+        serviceType: [
+          "Digital Marketing",
+          "SEO",
+          "Social Media Marketing",
+          "Content Marketing",
+        ],
+        areaServed: "Global",
+        description:
+          "Comprehensive digital marketing solutions including SEO, social media management, content strategy, and data-driven marketing campaigns.",
+      })}
+    </script>
+  );
+}

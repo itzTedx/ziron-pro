@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 interface Item {
   name: string;
   description: string;
-  icon: React.ReactNode; // Changed from LucideIcon to ReactNode
+  icon: React.ReactNode;
   time: string;
   index: number;
 }
@@ -68,7 +68,7 @@ export function AnimatedList({ className }: { className?: string }) {
       },
     ],
     []
-  ); // Added dependency array
+  );
 
   const calculateTimeAgo = (index: number) => {
     if (index === 0) return "just now";

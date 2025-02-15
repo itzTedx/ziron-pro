@@ -53,3 +53,48 @@ export const FAQS = [
       "Yes, we offer both SEO (organic marketing) and PPC (paid marketing) to ensure a comprehensive approach for maximum reach and impact.",
   },
 ];
+
+export const REVIEWS = [
+  {
+    img: "/images/featured/post-1.jpg",
+  },
+  {
+    img: "/images/featured/post-2.jpg",
+  },
+  {
+    img: "/images/featured/post-3.jpg",
+  },
+  {
+    img: "/images/featured/post-4.jpg",
+  },
+  {
+    img: "/images/featured/post-5.jpg",
+  },
+  {
+    img: "/images/featured/post-6.jpg",
+  },
+  {
+    img: "/images/featured/post-7.jpg",
+  },
+  {
+    img: "/images/featured/post-8.jpg",
+  },
+  {
+    img: "/images/featured/post-9.jpg",
+  },
+  {
+    img: "/images/featured/post-10.jpg",
+  },
+  {
+    img: "/images/featured/post-11.jpg",
+  },
+  {
+    img: "/images/featured/post-12.jpg",
+  },
+  {
+    img: "/images/featured/post-13.jpg",
+  },
+  {
+    img: "/images/featured/post-14.jpg",
+  },
+];

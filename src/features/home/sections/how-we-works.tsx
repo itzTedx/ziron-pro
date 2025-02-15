@@ -1,28 +1,51 @@
 import Image from "next/image";
+import { memo } from "react";
 
 import { Icons } from "@/assets/icons";
 import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { getBase64 } from "@/lib/placeholder";
+
+const ProcessCard = memo(
+  ({ id, icon, title, description }: (typeof HOW_WE_WORKS)[0]) => (
+    <Card className="relative overflow-clip bg-gray-50">
+      <CardHeader className="flex flex-row items-center justify-between p-6 md:p-8">
+        <div className="relative size-16 md:size-20" aria-hidden="true">
+          {icon}
+        </div>
+        <span
+          className="absolute right-3 top-0 font-monaSans text-7xl font-semibold italic text-violet-100"
+          aria-hidden="true"
+        >
+          #{id}
+        </span>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-2 p-4 pt-0 md:gap-6 md:p-6 md:pt-0">
+        <h3 className="text-balance text-xl font-medium md:leading-10 lg:text-3xl">
+          {title}
+        </h3>
+        <p>{description}</p>
+      </CardContent>
+    </Card>
+  )
+);
+
+ProcessCard.displayName = "ProcessCard";
 
 export default async function HowWeWorks() {
   const blurData = await getBase64("/images/marketing.jpg");
+
   return (
     <section
       className="container grid gap-10 py-12 md:grid-cols-2 md:py-24"
       id="how-we-works"
+      aria-labelledby="how-we-works-title"
     >
       <div className="top-28 flex h-fit flex-col gap-5 md:sticky">
         <Badge>✦ How we works</Badge>
-        <h2 className="title-2">
-          Here’s how your <span className="text-secondary">our process</span>{" "}
-          works
+        <h2 id="how-we-works-title" className="title-2">
+          Here&apos;s how your{" "}
+          <span className="text-secondary">our process</span> works
         </h2>
         <p className="text-balance">
           From initial consultation to final execution, we keep you informed
@@ -33,29 +56,18 @@ export default async function HowWeWorks() {
           <Image
             src="/images/marketing.jpg"
             fill
+            priority
             placeholder="blur"
             blurDataURL={blurData}
-            alt=""
+            alt="Digital marketing process illustration"
             className="rounded-xl object-cover"
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </div>
       </div>
-      <aside className="space-y-12 md:px-12">
-        {HOW_WE_WORKS.map(({ id, icon, title, description }) => (
-          <Card className="relative overflow-clip bg-gray-50" key={id}>
-            <CardHeader className="flex flex-row items-center justify-between p-6 md:p-8">
-              <div className="relative size-16 md:size-20">{icon}</div>
-              <span className="absolute right-3 top-0 font-monaSans text-7xl font-semibold italic text-violet-100">
-                #{id}
-              </span>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-2 p-4 pt-0 md:gap-6 md:p-6 md:pt-0">
-              <CardTitle className="text-balance text-xl font-medium md:leading-10 lg:text-3xl">
-                {title}
-              </CardTitle>
-              <CardDescription>{description}</CardDescription>
-            </CardContent>
-          </Card>
+      <aside className="space-y-12 md:px-12" role="complementary">
+        {HOW_WE_WORKS.map((item) => (
+          <ProcessCard key={item.id} {...item} />
         ))}
       </aside>
     </section>

@@ -22,22 +22,29 @@ const canvasStyle = {
   transition: "opacity 1s ease",
 } as const;
 
-const MARKERS = [
+type Marker = {
+  location: [number, number];
+  size: number;
+};
+
+const MARKERS: Marker[] = [
   { location: [37.7595, -122.4367], size: 0.04 },
   { location: [40.7128, -74.006], size: 0.05 },
   { location: [60.7128, -174.006], size: 0.05 },
   { location: [80.7128, -4.006], size: 0.03 },
   { location: [25.0749, 55.152], size: 0.06 },
   { location: [55.274, 24.008], size: 0.06 },
-] as const;
+];
+
+type GlobeInstance = ReturnType<typeof createGlobe>;
 
 export function CobeDraggable({ className }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
   const rotationValue = useMotionValue(0);
-  const globeRef = useRef<ReturnType<typeof createGlobe>>();
-  const animationRef = useRef<{ stop: () => void }>();
+  const globeRef = useRef<GlobeInstance>(null);
+  const animationRef = useRef<{ stop: () => void }>(null);
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     if (canvasRef.current) {
@@ -91,17 +98,22 @@ export function CobeDraggable({ className }: { className?: string }) {
   useEffect(() => {
     let phi = 0;
     let width = 0;
-    const onResize = debounce(
-      () => canvasRef.current && (width = canvasRef.current.offsetWidth),
-      100
-    );
+    const onResize = debounce(() => {
+      if (canvasRef.current) {
+        width = canvasRef.current.offsetWidth;
+        if (globeRef.current) {
+          width = canvasRef.current.offsetWidth;
+        }
+      }
+    }, 100);
 
     window.addEventListener("resize", onResize);
     onResize();
 
     if (canvasRef.current) {
-      globeRef.current = createGlobe(canvasRef.current, {
-        devicePixelRatio: 2,
+      const canvas = canvasRef.current;
+      globeRef.current = createGlobe(canvas, {
+        devicePixelRatio: window.devicePixelRatio || 2,
         width: width * 2,
         height: width * 2 * 0.4,
         phi: 0,
@@ -128,19 +140,19 @@ export function CobeDraggable({ className }: { className?: string }) {
       });
 
       setTimeout(() => {
-        if (canvasRef.current) {
-          canvasRef.current.style.opacity = "1";
-        }
+        canvas.style.opacity = "1";
       });
     }
 
     return () => {
-      globeRef.current?.destroy();
+      if (globeRef.current) {
+        globeRef.current.destroy();
+      }
       window.removeEventListener("resize", onResize);
       animationRef.current?.stop();
       onResize.cancel();
     };
-  }, []);
+  }, [rotationValue]);
 
   return (
     <div className={className} style={containerStyle}>

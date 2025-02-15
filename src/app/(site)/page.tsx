@@ -1,64 +1,77 @@
+import dynamic from "next/dynamic";
 import Script from "next/script";
-
-import type { Organization, WithContext } from "schema-dts";
+import { Suspense } from "react";
 
 import Cta from "@/components/global/cta";
-import { siteConfig } from "@/config/site";
-import Faq from "@/features/home/sections/faq";
-import { Featured } from "@/features/home/sections/featured";
-import Feedback from "@/features/home/sections/feedback";
-import GetStarted from "@/features/home/sections/get-started";
+import { LoadingSpinner } from "@/components/global/loading";
 import Hero from "@/features/home/sections/hero";
-import HowWeWorks from "@/features/home/sections/how-we-works";
-import { Works } from "@/features/home/sections/works";
+import { organizationJsonLd } from "@/lib/json-ld";
 
-export const dynamic = "force-static";
+// Dynamically import components that are below the fold
+const Featured = dynamic(
+  () =>
+    import("@/features/home/sections/featured").then((mod) => ({
+      default: mod.Featured,
+    })),
+  { ssr: true }
+);
+const HowWeWorks = dynamic(
+  () => import("@/features/home/sections/how-we-works"),
+  { ssr: true }
+);
+const Works = dynamic(
+  () =>
+    import("@/features/home/sections/works").then((mod) => ({
+      default: mod.Works,
+    })),
+  { ssr: true }
+);
+const GetStarted = dynamic(
+  () => import("@/features/home/sections/get-started"),
+  { ssr: true }
+);
+const Feedback = dynamic(() => import("@/features/home/sections/feedback"), {
+  ssr: true,
+});
+const Faq = dynamic(() => import("@/features/home/sections/faq"), {
+  ssr: true,
+});
 
-const jsonLd: WithContext<Organization> = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: siteConfig.shortName,
-  image: `${process.env.BASE_URL}${siteConfig.ogImage}`,
-  logo: `${process.env.BASE_URL}${siteConfig.logo}`,
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: siteConfig.contact,
-    contactType: "Customer services",
-    areaServed: "Worldwide",
-    availableLanguage: "English, Arabic, Hindi, Malayalam, Tamil",
+export const metadata = {
+  alternates: {
+    canonical: "/",
   },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Metro Exit 1 Burdubai - 303, Aura Xavier Building",
-    addressLocality: "Al Gubaiba",
-    addressRegion: "Dubai",
-    addressCountry: "AE",
-  },
-  sameAs: [
-    siteConfig.links.facebook,
-    siteConfig.links.instagram,
-    siteConfig.links.linkedin,
-  ],
-
-  description: siteConfig.description,
 };
 
 export default function Home() {
   return (
     <main className="pt-0">
       <Hero />
-      <Featured />
-      <HowWeWorks />
-      <Works />
-      <GetStarted />
-      <Feedback />
-      <Faq />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Featured />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <HowWeWorks />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Works />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <GetStarted />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Feedback />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Faq />
+      </Suspense>
       <Cta />
 
       <Script
         id="json-ld"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        strategy="afterInteractive"
       />
     </main>
   );
