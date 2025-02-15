@@ -1,4 +1,4 @@
-import dynamic from "next/dynamic";
+import { Suspense, lazy } from "react";
 
 import { IconCircle } from "@tabler/icons-react";
 
@@ -7,17 +7,20 @@ import FooterCopy from "./copy";
 import { FooterHead } from "./head";
 import FooterLinks from "./links";
 
-const SparklingGrid = dynamic(() => import("../../animations/sparkling-grid"), {
-  loading: () => <IconCircle className="animate-spin" />,
-});
+const SparklingGrid = lazy(() =>
+  import("../../animations/sparkling-grid").then((mod) => ({
+    default: mod.default,
+  }))
+);
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="relative h-full bg-gray-950">
-      <SparklingGrid />
+    <footer className="relative h-full bg-gray-950" role="contentinfo">
+      <Suspense fallback={<IconCircle className="animate-spin" />}>
+        <SparklingGrid />
+      </Suspense>
       <div className="container relative z-50 grid grid-cols-2 justify-between gap-12 px-9 py-12 md:grid-cols-3 md:gap-6 md:py-20">
         <FooterHead />
-
         <FooterLinks />
       </div>
       <div className="flex w-full items-center justify-center max-md:px-4">
@@ -26,4 +29,6 @@ export default function Footer() {
       <FooterCopy />
     </footer>
   );
-}
+};
+
+export default Footer;

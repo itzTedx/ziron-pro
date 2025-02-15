@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { memo } from "react";
 
 import { cn } from "@/lib/utils";
 
-export const PartnerLogo = ({
+export const PartnerLogo = memo(function PartnerLogo({
   className,
   height = 50,
   width = 120,
@@ -10,49 +11,45 @@ export const PartnerLogo = ({
   className?: string;
   height?: number;
   width?: number;
-}) => {
+}) {
   return (
-    <ul className={cn("flex items-center gap-12", className)}>
-      <li>
-        <Image
-          src="/logos/google-partner.svg"
-          width={width}
-          height={height}
-          alt="Google Partner"
-        />
-      </li>
-      <li>
-        <Image
-          src="/logos/meta-business-partner.svg"
-          width={width}
-          height={height}
-          alt="Meta Business Partner"
-          className="dark:hidden"
-        />
-        <Image
-          src="/logos/meta-dark.svg"
-          width={width}
-          height={height}
-          alt="Meta Business Partner"
-          className="hidden dark:block"
-        />
-      </li>
-      <li>
-        <Image
-          src="/logos/tiktok-partner.svg"
-          width={width}
-          height={height}
-          alt="Tiktok Partner"
-          className="dark:hidden"
-        />
-        <Image
-          src="/logos/tiktok-dark.svg"
-          width={width}
-          height={height}
-          alt="Meta Business Partner"
-          className="hidden dark:block"
-        />
-      </li>
-    </ul>
+    <div role="list" className={cn("flex items-center gap-12", className)}>
+      {[
+        { src: "/logos/google-partner.svg", alt: "Google Partner" },
+        {
+          src: "/logos/meta-business-partner.svg",
+          darkSrc: "/logos/meta-dark.svg",
+          alt: "Meta Business Partner",
+        },
+        {
+          src: "/logos/tiktok-partner.svg",
+          darkSrc: "/logos/tiktok-dark.svg",
+          alt: "Tiktok Partner",
+        },
+      ].map((logo) => (
+        <div key={logo.alt} role="listitem">
+          <Image
+            src={logo.src}
+            width={width}
+            height={height}
+            alt={logo.alt}
+            loading="eager"
+            className={logo.darkSrc ? "dark:hidden" : ""}
+            priority
+          />
+          {logo.darkSrc && (
+            <Image
+              src={logo.darkSrc}
+              width={width}
+              height={height}
+              alt={logo.alt}
+              loading="eager"
+              className="hidden dark:block"
+              priority
+            />
+          )}
+        </div>
+      ))}
+    </div>
   );
-};
+});

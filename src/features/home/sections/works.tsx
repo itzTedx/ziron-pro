@@ -6,7 +6,7 @@ export function Works() {
   const cards = data.map((card) => <Card key={card.src} card={card} />);
 
   return (
-    <div className="py-12 md:py-24">
+    <section className="py-12 md:py-24">
       <div className="container">
         <Badge>✦ Happy Customers</Badge>
         <h2 className="title-2 mt-5 max-w-xl">
@@ -16,7 +16,7 @@ export function Works() {
       </div>
 
       <Carousel items={cards} />
-    </div>
+    </section>
   );
 }
 
