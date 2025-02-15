@@ -1,12 +1,15 @@
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { Icons } from "@/assets/icons";
 import { LoadingSpinner } from "@/components/global/loading";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig } from "@/config/site";
 
+export const runtime = "edge";
+export const preferredRegion = "auto";
 export const revalidate = 86400; // Revalidate once per day
 
 const ContactForm = dynamic(
@@ -94,7 +97,9 @@ export default function ContactPage() {
             </div>
           </section>
 
-          <ContactForm />
+          <Suspense fallback={<LoadingSpinner />}>
+            <ContactForm />
+          </Suspense>
         </div>
       </main>
     </>
@@ -137,5 +142,33 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black",
+    "format-detection": "telephone=no",
+  },
+  category: "contact",
+  applicationName: "Ziron Pro",
+  referrer: "origin-when-cross-origin",
+  keywords: [
+    "contact",
+    "dubai digital agency",
+    "marketing agency dubai",
+    "ziron Pro contact",
+  ],
+  authors: [{ name: "Ziron Pro", url: siteConfig.url }],
+  creator: "Ziron Pro",
+  publisher: "Ziron Pro",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
 };
