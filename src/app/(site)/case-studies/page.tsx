@@ -4,6 +4,7 @@ import { Suspense } from "react";
 
 import { Blob } from "@/assets/blob";
 import { ContactCta } from "@/components/global/cta";
+import { LoadingSpinner } from "@/components/global/loading";
 import { CaseCards } from "@/features/case-studies/components/case-cards";
 import { Header } from "@/features/case-studies/components/header";
 import { CASE_STUDIES } from "@/features/case-studies/constant";
@@ -34,7 +35,7 @@ export default function CaseStudiesPage() {
         <Header />
         <Blob className="absolute -right-[20%] top-0 opacity-50" />
         <section className="container grid max-w-7xl">
-          <Suspense fallback={<div>Loading case studies...</div>}>
+          <Suspense fallback={<LoadingSpinner />}>
             <CaseCards items={CASE_STUDIES} />
           </Suspense>
         </section>
