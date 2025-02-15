@@ -25,7 +25,6 @@ export default async function ServicePage({
         </h1>
         <p className="mt-4 text-balance">{metadata.description}</p>
         <figure className="relative mt-9 aspect-[16/7] w-full overflow-hidden rounded-xl bg-gray-100 md:mt-16">
-          {/* <div className="absolute bottom-0 z-10 h-96 w-full bg-gradient-to-t from-background/50 to-transparent" /> */}
           <Image
             src={metadata.image!}
             fill
