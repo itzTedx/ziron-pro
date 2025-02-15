@@ -1,23 +1,20 @@
-
-
 import Link from "next/link";
+import { forwardRef } from "react";
 
 import { LogoType } from "@/assets/logo";
 import { RevealText } from "@/components/animations/reveal-text";
 import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { forwardRef } from "react";
+
 import { NAV_LINKS } from "./constant";
-
-
 
 export function NavLinks() {
   const services = NAV_LINKS.filter((item) => item.services);

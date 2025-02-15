@@ -1,11 +1,10 @@
 "use client";
 
+import React, { forwardRef, useRef } from "react";
+
 import { Icons } from "@/assets/icons";
 import { AnimatedBeam } from "@/components/animations/animated-beam";
 import { cn } from "@/lib/utils";
-import React, { forwardRef, useRef } from "react";
-
-
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -27,17 +26,31 @@ const Circle = forwardRef<
 Circle.displayName = "Circle";
 
 export function AnimatedBeamComp({ className }: { className?: string }) {
-    const containerRef = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
+  const containerRef = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
 
-    const div1Ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
-    const div2Ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
-    const div3Ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
-    const div4Ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
-    const div5Ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
-    const div6Ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
-    const div7Ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
-
- 
+  const div1Ref = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
+  const div2Ref = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
+  const div3Ref = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
+  const div4Ref = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
+  const div5Ref = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
+  const div6Ref = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
+  const div7Ref = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
 
   return (
     <div

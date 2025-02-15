@@ -6,8 +6,6 @@ import { Icons } from "@/assets/icons";
 import { AnimatedList as List } from "@/components/animations/animated-list";
 import { cn } from "@/lib/utils";
 
-
-
 interface Item {
   name: string;
   description: string;

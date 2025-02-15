@@ -1,11 +1,16 @@
-import { siteConfig } from "@/config/site";
-import { Featured } from "@/features/home/sections/featured";
-import Hero from "@/features/home/sections/hero";
 import Script from "next/script";
 
 import type { Organization, WithContext } from "schema-dts";
 
-
+import Cta from "@/components/global/cta";
+import { siteConfig } from "@/config/site";
+import Faq from "@/features/home/sections/faq";
+import { Featured } from "@/features/home/sections/featured";
+import Feedback from "@/features/home/sections/feedback";
+import GetStarted from "@/features/home/sections/get-started";
+import Hero from "@/features/home/sections/hero";
+import HowWeWorks from "@/features/home/sections/how-we-works";
+import { Works } from "@/features/home/sections/works";
 
 export const dynamic = "force-static";
 
@@ -43,15 +48,13 @@ export default function Home() {
     <main className="pt-0">
       <Hero />
       <Featured />
-      {/* <HowWeWorks />
-
+      <HowWeWorks />
       <Works />
-
-      <GetStated />
-
+      <GetStarted />
       <Feedback />
       <Faq />
-      <Cta /> */}
+      <Cta />
+
       <Script
         id="json-ld"
         type="application/ld+json"

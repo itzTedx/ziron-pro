@@ -25,7 +25,6 @@ import {
 import { siteConfig } from "@/config/site";
 import { cn, getCurrentTime } from "@/lib/utils";
 
-
 const examples = [
   "What are the monthly costs?",
   "Is digital marketing benefit my business?",
@@ -117,7 +116,8 @@ export default function FloatingWhatsapp({
       <Popover>
         <PopoverTrigger
           onClick={handleClick}
-          className="overflow-hidden rounded-full border shadow-lg" asChild
+          className="overflow-hidden rounded-full border shadow-lg"
+          asChild
         >
           <div className="flex size-16 items-center justify-center bg-background">
             <Icons.whatsapp className="size-8" />
@@ -125,7 +125,7 @@ export default function FloatingWhatsapp({
         </PopoverTrigger>
         <PopoverContent
           align="end"
-          className="w-[375px] overflow-hidden rounded-xl border-primary p-0 shadow-primary-md z-50"
+          className="z-50 w-[375px] overflow-hidden rounded-xl border-primary p-0 shadow-primary-md"
         >
           <Card className="border-0">
             <CardHeader className="flex flex-row items-center gap-3 space-y-0 bg-primary p-4 text-background">

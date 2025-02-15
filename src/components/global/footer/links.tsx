@@ -1,11 +1,11 @@
 "use client";
 
-import { RevealText } from "@/components/animations/reveal-text";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import { RevealText } from "@/components/animations/reveal-text";
+
 import { NAV_LINKS } from "../navbar/constant";
-
-
 
 export default function FooterLinks() {
   const pathName = usePathname();

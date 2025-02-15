@@ -7,7 +7,6 @@ import FooterCopy from "./copy";
 import { FooterHead } from "./head";
 import FooterLinks from "./links";
 
-
 const SparklingGrid = dynamic(() => import("../../animations/sparkling-grid"), {
   loading: () => <IconCircle className="animate-spin" />,
 });

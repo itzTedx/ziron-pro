@@ -5,16 +5,13 @@ import { usePathname } from "next/navigation";
 import { memo, useEffect, useRef, useState } from "react";
 
 import {
-    IconBriefcase,
-    IconBuildingSkyscraper,
-    IconPhone,
-    IconStar,
+  IconBriefcase,
+  IconBuildingSkyscraper,
+  IconPhone,
+  IconStar,
 } from "@tabler/icons-react";
 import { ListCollapseIcon } from "lucide-react";
-import {
-    AnimatePresence,
-    motion
-} from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 
 import { useOnClickOutside } from "@/hooks/use-outside-click";
 import { cn } from "@/lib/utils";
@@ -49,8 +46,10 @@ export const FloatingDock = memo(({ className }: { className?: string }) => {
 FloatingDock.displayName = "FloatingDock";
 
 const FloatingDockMobile = ({ className }: { className?: string }) => {
-  const ref = useRef<HTMLDivElement | null>(null) as React.RefObject<HTMLDivElement>;
-  
+  const ref = useRef<HTMLDivElement | null>(
+    null
+  ) as React.RefObject<HTMLDivElement>;
+
   const handleClickOutside = () => {
     setOpen(false);
   };
@@ -123,4 +122,3 @@ const FloatingDockMobile = ({ className }: { className?: string }) => {
     </div>
   );
 };
-

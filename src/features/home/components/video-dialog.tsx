@@ -9,15 +9,14 @@ import { Play } from "lucide-react";
 
 import { Blob } from "@/assets/blob";
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-
 
 const MediaThemeSutro = dynamic(() => import("player.style/sutro/react"), {
   loading: () => <IconCircle className="animate-spin" />,

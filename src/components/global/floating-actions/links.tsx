@@ -1,9 +1,16 @@
-import { cn } from "@/lib/utils";
-import { IconBriefcase, IconBuildingSkyscraper, IconPhone, IconStar } from "@tabler/icons-react";
-import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { memo } from "react";
+
+import {
+  IconBriefcase,
+  IconBuildingSkyscraper,
+  IconPhone,
+  IconStar,
+} from "@tabler/icons-react";
+import { motion } from "motion/react";
+
+import { cn } from "@/lib/utils";
 
 const sectionLinks = [
   {

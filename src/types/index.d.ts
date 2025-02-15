@@ -19,13 +19,12 @@ declare global {
     href: string;
     services?: Array<NavService>;
   }
-  
+
   interface NavService {
     title: string;
     href: string;
     description: string;
   }
-  
 
   interface Service {
     metadata: ServiceMetadata;
@@ -43,5 +42,4 @@ declare global {
 }
 
 // Need to export something to make it a module
-export { };
-
+export {};

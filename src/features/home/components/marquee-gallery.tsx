@@ -4,7 +4,6 @@ import { Marquee } from "@/components/animations/marquee";
 import { getBase64 } from "@/lib/placeholder";
 import { cn } from "@/lib/utils";
 
-
 const reviews = [
   {
     img: "/images/featured/post-1.jpg",

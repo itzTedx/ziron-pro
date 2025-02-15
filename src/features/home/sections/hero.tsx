@@ -1,12 +1,10 @@
+import Link from "next/link";
+
 import { siteConfig } from "@/config/site";
 import { getBase64 } from "@/lib/placeholder";
-import Link from "next/link";
+
 import MagneticButton from "../components/magnetic-button";
 import HeroVideoDialog from "../components/video-dialog";
-
-
-
-
 
 export default async function Hero() {
   const blurData = await getBase64("/images/landing-intro-thumb.webp");

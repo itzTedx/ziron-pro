@@ -1,5 +1,5 @@
-
 import { Icons } from "@/assets/icons";
+
 import { PartnerLogo } from "./partners";
 import Socials from "./socials";
 

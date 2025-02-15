@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 import { monaSans, plusJakarta, valverde } from "@/assets/fonts";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-
 import { FloatingActions } from "@/components/global/floating-actions";
 import Footer from "@/components/global/footer";
 import Navbar from "@/components/global/navbar";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+
 import "../styles/globals.css";
 import "../styles/ui.css";
 import { Providers } from "./providers";

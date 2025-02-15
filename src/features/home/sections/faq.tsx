@@ -1,4 +1,4 @@
-import { Blob } from "@/components/assets/blob";
+import { Blob } from "@/assets/blob";
 import {
   Accordion,
   AccordionContent,
@@ -6,7 +6,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { FAQS } from "@/constants/faq";
+
+import { FAQS } from "../constants";
 
 export default async function Faq() {
   return (
@@ -18,8 +19,9 @@ export default async function Faq() {
           <span className="text-secondary">questions?</span>
         </h2>
         <p className="text-balance">
-          Everything you need to know about our services and the costs. Can’t
-          find the answer you’re looking for? Please chat to our team.
+          Everything you need to know about our services and the costs.
+          Can&apos;t find the answer you&apos;re looking for? Please chat to our
+          team.
         </p>
       </div>
       <aside

@@ -1,12 +1,13 @@
 import dynamic from "next/dynamic";
 
+import Iphone15Pro from "@/assets/iphone";
 import { Badge } from "@/components/ui/badge";
-import Iphone15Pro from "@/components/ui/iphone-15-pro";
 
 const AnimatedList = dynamic(() =>
-  import("@/components/bento/animated-list").then((mod) => mod.AnimatedListDemo)
+  import("../components/animated-list").then((mod) => mod.AnimatedList)
 );
-export default function GetStated() {
+
+export default function GetStarted() {
   return (
     <>
       <section className="relative mx-auto max-w-7xl px-6 py-32 max-lg:overflow-hidden lg:py-40">
@@ -41,8 +42,6 @@ export default function GetStated() {
           />
           <AnimatedList className="absolute top-1/2 h-[260px] w-full -translate-y-[32%] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_70%)]" />
         </div>
-        {/* <Blob className="absolute right-0 top-1/2 -z-40 -translate-y-1/2 scale-125" />
-        <Blob className="absolute -left-1/4 top-1/2 -z-40 -translate-y-1/2 rotate-45" /> */}
       </section>
     </>
   );

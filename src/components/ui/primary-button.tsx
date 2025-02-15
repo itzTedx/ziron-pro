@@ -2,9 +2,8 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import "@/styles/ui.css";
+
 import { RevealText } from "../animations/reveal-text";
-
-
 
 interface CtaButtonProps {
   href: string;
@@ -12,7 +11,11 @@ interface CtaButtonProps {
   label: string;
 }
 
-export default function PrimaryButton({ href, className, label }: CtaButtonProps) {
+export default function PrimaryButton({
+  href,
+  className,
+  label,
+}: CtaButtonProps) {
   return (
     <Link
       href={href}

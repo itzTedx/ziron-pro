@@ -1,5 +1,6 @@
-import { Card, Carousel } from "@/components/ui/apple-cards-carousel";
 import { Badge } from "@/components/ui/badge";
+
+import { Card, Carousel } from "../components/carousel-case";
 
 export function Works() {
   const cards = data.map((card) => <Card key={card.src} card={card} />);

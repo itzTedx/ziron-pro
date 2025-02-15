@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Icons } from "@/components/icons";
+import { Icons } from "@/assets/icons";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getBase64 } from "@/server/actions/get-blurred-img-data";
+import { getBase64 } from "@/lib/placeholder";
 
 export default async function HowWeWorks() {
   const blurData = await getBase64("/images/marketing.jpg");

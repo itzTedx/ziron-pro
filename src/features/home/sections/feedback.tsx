@@ -1,12 +1,13 @@
 import { EmblaOptionsType } from "embla-carousel";
 
-import { Logo } from "@/components/logo";
+import { Logo } from "@/assets/logo";
 import Carousel, {
   Slider,
   SliderContainer,
   SliderDotButton,
 } from "@/components/ui/carousel";
-import { FEEDBACKS } from "@/constants/feedbacks";
+
+import { FEEDBACKS } from "../constants";
 
 export default function Feedback() {
   const OPTIONS: EmblaOptionsType = { loop: true };

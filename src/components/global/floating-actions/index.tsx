@@ -1,6 +1,7 @@
-import { cn } from '@/lib/utils'
-import { FloatingDock } from './dock'
-import FloatingWhatsapp from './whatsapp'
+import { cn } from "@/lib/utils";
+
+import { FloatingDock } from "./dock";
+import FloatingWhatsapp from "./whatsapp";
 
 export const FloatingActions = () => {
   return (
@@ -18,5 +19,5 @@ export const FloatingActions = () => {
       </div>
       <FloatingWhatsapp className="hidden md:block" />
     </>
-  )
-}
+  );
+};

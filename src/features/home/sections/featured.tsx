@@ -1,40 +1,34 @@
 import dynamic from "next/dynamic";
 
+import { IconCircle } from "@tabler/icons-react";
+
 import { Blob } from "@/assets/blob";
 import { Badge } from "@/components/ui/badge";
-import { IconCircle } from "@tabler/icons-react";
+
 import { BentoCard, BentoGrid } from "../components/bento-grid";
-import { CobeDraggableAuto } from "../components/cobe";
 import { TitlePullUp } from "../components/word-pullup";
 
-
-
-const MarqueeComp = dynamic(
-  () => import("../components/marquee-services"),
-  {
-    loading: () => <IconCircle className="animate-spin" />,
-  }
-);
-const MarqueeGallery = dynamic(
-  () => import("../components/marquee-gallery"),
-  {
-    loading: () => <IconCircle className="animate-spin" />,
-  }
-);
+const MarqueeComp = dynamic(() => import("../components/marquee-services"), {
+  loading: () => <IconCircle className="animate-spin" />,
+});
+const MarqueeGallery = dynamic(() => import("../components/marquee-gallery"), {
+  loading: () => <IconCircle className="animate-spin" />,
+});
 const AnimatedList = dynamic(
-  () =>
-    import("../components/animated-list").then(
-      (mod) => mod.AnimatedList
-    ),
+  () => import("../components/animated-list").then((mod) => mod.AnimatedList),
   {
     loading: () => <IconCircle className="animate-spin" />,
   }
 );
 const AnimatedBeamComp = dynamic(
   () =>
-    import("../components/animated-beam").then(
-      (mod) => mod.AnimatedBeamComp
-    ),
+    import("../components/animated-beam").then((mod) => mod.AnimatedBeamComp),
+  {
+    loading: () => <IconCircle className="animate-spin" />,
+  }
+);
+const CobeDraggable = dynamic(
+  () => import("../components/cobe").then((mod) => mod.CobeDraggable),
   {
     loading: () => <IconCircle className="animate-spin" />,
   }
@@ -111,12 +105,9 @@ const features = [
     href: "/what-we-do/digital-marketing",
     cta: "Learn more",
     background: (
-      
-      <div className="absolute h-full w-full">
-        <CobeDraggableAuto />
+      <div className="absolute bottom-0 right-0 size-full">
+        <CobeDraggable />
       </div>
-
-      
     ),
   },
   {
@@ -124,7 +115,7 @@ const features = [
     description:
       "Our partnership doesn’t stop at campaign launch. We provide continuous support and insights, helping you adapt and thrive as your brand evolves.",
     className: "lg:col-start-1 md:col-span-2 lg:row-start-4 lg:col-span-1",
-   
+
     background: "",
   },
   {

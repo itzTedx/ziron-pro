@@ -2,11 +2,10 @@
 
 import Link from "next/link";
 
+import { Logo } from "@/assets/logo";
 import useScroll from "@/hooks/use-scroll";
 import { cn } from "@/lib/utils";
 
-
-import { Logo } from "@/assets/logo";
 import PrimaryButton from "../../ui/primary-button";
 import { NavLinks } from "./links";
 

@@ -4,8 +4,6 @@ import { Marquee } from "@/components/animations/marquee";
 import { getServices } from "@/features/services/action";
 import { cn } from "@/lib/utils";
 
-
-
 export default async function MarqueeComp() {
   const services = await getServices();
   return (
@@ -71,5 +69,3 @@ export default async function MarqueeComp() {
     </div>
   );
 }
-
-
