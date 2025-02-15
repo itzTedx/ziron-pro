@@ -32,7 +32,7 @@ export default async function Faq() {
         <Accordion
           type="single"
           collapsible
-          className="relative flex w-full flex-col gap-6 md:gap-8"
+          className="relative flex w-full flex-col gap-6 md:gap-4"
           defaultValue="faq-0"
         >
           {FAQS.map((faq, i) => (

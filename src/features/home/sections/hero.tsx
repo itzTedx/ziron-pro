@@ -46,7 +46,7 @@ export default async function Hero() {
 
         <HeroVideoDialog
           blurData={blurData}
-          className="mx-auto mt-12 max-w-5xl md:mt-24"
+          className="container mt-12 max-w-6xl md:mt-24"
           videoSrc="/video/Landing-intro.webm"
           videoPlaceholder="/video/Landing-intro-low.webm"
           subtitle="/video/subtitle.vtt"
